@@ -1,0 +1,5 @@
+{
+  "name": "Kindergarten Worksheet Generator",
+  "description": "An application that accepts photos of kindergarten student activities and converts them into a printable A4 worksheet using generative AI. The worksheet includes the school and class name at the top.",
+  "requestFramePermissions": []
+}

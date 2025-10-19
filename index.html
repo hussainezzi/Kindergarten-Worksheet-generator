@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kindergarten Worksheet Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @media print {
+        body * {
+          visibility: hidden;
+        }
+        #printable-worksheet, #printable-worksheet * {
+          visibility: visible;
+        }
+        #printable-worksheet {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 210mm;
+          height: 297mm;
+          margin: 0;
+          padding: 10mm;
+          box-shadow: none;
+          border: none;
+        }
+        .no-print {
+          display: none;
+        }
+      }
+      /* A4 paper aspect ratio for screen preview */
+      .a4-container {
+        width: 100%;
+        max-width: 800px; /* Adjust as needed */
+        aspect-ratio: 210 / 297;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.25.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+</head>
+  <body class="bg-gray-50">
+    <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
