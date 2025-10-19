@@ -1,13 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
 
-const API_KEY = process.env.API_KEY;
-
-if (!API_KEY) {
-  throw new Error("API_KEY environment variable not set");
-}
-
-const ai = new GoogleGenAI({ apiKey: "AIzaSyDcLJZ5GCBftOHtdvjNtgJ9blaCURnguE8" });
-
 const model = 'gemini-2.5-flash';
 
 const prompt = `
@@ -24,6 +16,14 @@ Here are the rules:
 `;
 
 export async function generateWorksheetFromImage(base64Image: string, mimeType: string): Promise<string> {
+  const API_KEY = process.env.API_KEY;
+
+  if (!API_KEY) {
+    throw new Error("API key is not configured. Please ensure the API_KEY environment variable is set.");
+  }
+
+  const ai = new GoogleGenAI({ apiKey: API_KEY });
+
   try {
     const imagePart = {
       inlineData: {
@@ -53,6 +53,9 @@ export async function generateWorksheetFromImage(base64Image: string, mimeType: 
     return cleanedHtml;
   } catch (error) {
     console.error("Error calling Gemini API:", error);
-    throw new Error("Failed to generate worksheet from image. Please try again.");
+    if (error instanceof Error && /API key not valid/i.test(error.message)) {
+      throw new Error("The provided API Key is invalid. Please check your configuration.");
+    }
+    throw new Error("Failed to generate worksheet. The AI model may be experiencing issues or the API key is invalid.");
   }
 }
