@@ -22,7 +22,7 @@ export async function generateWorksheetFromImage(base64Image: string, mimeType: 
     throw new Error("API key is not configured. Please ensure the API_KEY environment variable is set.");
   }
 
-  const ai = new GoogleGenAI({ apiKey: API_KEY });
+  const ai = new GoogleGenAI({ apiKey: "AIzaSyDNwJ6LsKa0jljyfB_Us-w-9i5u6NMsP0E" });
 
   try {
     const imagePart = {
