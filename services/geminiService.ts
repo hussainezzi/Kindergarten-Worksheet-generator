@@ -16,7 +16,7 @@ Here are the rules:
 `;
 
 export async function generateWorksheetFromImage(base64Image: string, mimeType: string): Promise<string> {
-  const API_KEY = "AIzaSyDNwJ6LsKa0jljyfB_Us-w-9i5u6NMsP0E";
+  const API_KEY = "AIzaSyAGHB7yxxC_utKYoR9O4vA8FGCfBlEVh4A";
 
   if (!API_KEY) {
     throw new Error("API key is not configured. Please ensure the API_KEY environment variable is set.");
